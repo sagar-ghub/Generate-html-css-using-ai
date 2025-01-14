@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Setup Guide
 
-## Getting Started
+## Tech Stack
 
-First, run the development server:
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **TypeScript**: Superset of JavaScript for static typing.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **ShadcnUI**: Pre-built UI components built on Tailwind CSS.
+- **NextAuth.js**: Authentication solution for Next.js.
+- **Prisma**: Type-safe ORM for PostgreSQL.
+- **PostgreSQL**: Relational database for data storage.
+- **Vercel's AI SDK**: Integration with AI/GenAI capabilities for dynamic HTML/CSS generation.
+
+## Prerequisites
+
+- **Node.js** (v14+)
+- **npm** or **yarn**
+- **PostgreSQL Database** (Supabase or NeonDB recommended)
+
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd <repository-folder>
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file in the root directory and add the following variables:
+
+```env
+DATABASE_URL=your_postgres_database_url
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_nextauth_secret
+```
+
+### 4. Prisma Setup
+
+1. **Generate Prisma Client**:
+   ```bash
+   npx prisma generate
+   ```
+2. **Run Migrations**:
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+
+### 5. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **/auth/signin**: Sign-in page using NextAuth.js.
+- **/chat**: Chat interface for HTML/CSS code generation.
 
-## Learn More
+## Authentication Setup
 
-To learn more about Next.js, take a look at the following resources:
+Using **NextAuth.js** with **Credentials Provider** for email/password authentication. You can also add social providers if needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Using Vercel's AI SDK
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Integrate the AI SDK for generating HTML/CSS:
 
-## Deploy on Vercel
+- Configure the API endpoint and request handling in the `/api` directory.
+- Ensure proper API key management via environment variables.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Additional Information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Tailwind CSS**: Used for fast and consistent styling.
+- **ShadcnUI**: Provides pre-built, customizable UI components for rapid development.
+- **Prisma**: Simplifies database interactions with a clean, type-safe API.
+- **Vercel**: Deployed on Vercel for seamless CI/CD and hosting.
+
+## Commands
+
+- **`npm run dev`**: Start the development server.
+- **`npm run build`**: Build the project for production.
+- **`npm run start`**: Start the production server.
+- **`npx prisma studio`**: Launch Prisma Studio for database management.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request or open an issue for discussion.
+
+---
+
+**Note**: Ensure that all sensitive information (like API keys) is securely stored and not committed to the repository.
