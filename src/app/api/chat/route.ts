@@ -1,20 +1,15 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
-import { OpenAI } from 'openai';
+// import { OpenAI } from 'openai';
 import { generateText } from 'ai';
 import { google } from '@ai-sdk/google';
 
-// Initialize the AI instance
-// const ai = new AI({
-//   provider: 'openai',
-//   apiKey: process.env.OPENAI_API_KEY!,
-// });
+
 
 // Initialize OpenAI instance
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY!,
-});
-const model = google('gemini-1.5-pro-latest');
+// const openai = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY!,
+// });
+// const model = google('gemini-1.5-pro-latest');
 
 const generateHtmlCss = async (prompt: string) => {
   try {
@@ -68,7 +63,7 @@ export async function POST(req: Request) {
       // const htmlCss=""
     return NextResponse.json({ htmlCss });
     } catch (error) {
-      return NextResponse.json({ error:"Error fetching AI" });
+      return NextResponse.json({ error:"Error fetching AI"+error });
     }
   
 }

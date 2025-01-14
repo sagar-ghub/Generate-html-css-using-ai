@@ -24,7 +24,7 @@ export async function POST(req: Request) {
           });
     return NextResponse.json({ message:"Successfully registered" });
     } catch (error) {
-      return NextResponse.json({error:"Error Occured" },{ status: 400 });
+      return NextResponse.json({error:"Error Occured"+error },{ status: 400 });
     }
   
 }

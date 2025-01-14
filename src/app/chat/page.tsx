@@ -34,11 +34,11 @@ const Chat = () => {
 
       const data = await res.json();
       if (!data.error) {
-        let html = data.htmlCss.replace("```html\n", "").replace("```", "");
+        const html = data.htmlCss.replace("```html\n", "").replace("```", "");
         setHtmlPreview(html);
       }
     } catch (err) {
-      console.log("Error generating HTML/CSS");
+      console.log("Error generating HTML/CSS"+err);
     } finally {
       setLoading(false); 
     }
