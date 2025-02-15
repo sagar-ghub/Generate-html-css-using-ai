@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatbot-service
+spec:
+  selector:
+    app: chatbot
+  ports:
+    - protocol: TCP
+      port: 80 # Exposed port
+      targetPort: 3000 # Matches the container port
+  type: LoadBalancer # Use NodePort if you’re running locally
